@@ -10,12 +10,12 @@ public class TestMB {
     private static final int countB = 100_000;
 
     private static ArrayList<Integer> a1 = GeneratorData.sortNumber(countA, -10000, 10000);
-    private static ArrayList<Integer> a2 = GeneratorData.sortNumber(countA, -10000, 10000);
+    private static ArrayList<Integer> a2 = (ArrayList<Integer>) a1.clone(); // одинаковые рандомные выборки
     private static ArrayList<Integer> b = GeneratorData.sortNumber(countB, -10000, 10000);
 
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
-    @Fork(value = 3)
+    @Fork(value = 2)
     @Warmup(iterations = 0)
     @Measurement(iterations = 1)
     public void merge() {
@@ -24,7 +24,7 @@ public class TestMB {
 
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
-    @Fork(value = 3)
+    @Fork(value = 2)
     @Warmup(iterations = 0)
     @Measurement(iterations = 1)
     public void merge2() {

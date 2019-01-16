@@ -3,7 +3,6 @@ package main;
 import java.util.ArrayList;
 
 public class Simple {
-
     public static void merge(ArrayList<Integer> a, ArrayList<Integer> b) {
         final int lenB = b.size();
         final int lenA = a.size();
@@ -18,13 +17,13 @@ public class Simple {
         while (iTempA < lenA && iB < lenB) {
             int temp = tempA.get(iTempA).compareTo(b.get(iB));
             switch (temp) {
+                case -1:
+                    a.add(tempA.get(iTempA++));
+                    break;
                 case 0:
                     a.add(tempA.get(iTempA++));
                 case 1:
                     a.add(b.get(iB++));
-                    break;
-                case -1:
-                    a.add(tempA.get(iTempA++));
             }
         }
 
