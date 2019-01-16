@@ -6,29 +6,44 @@ import org.openjdk.jmh.annotations.*;
 import java.util.ArrayList;
 
 public class TestMB {
-    private static final int countA = 100_000;
-    private static final int countB = 100_000;
 
-    private static ArrayList<Integer> a1 = GeneratorData.sortNumber(countA, -10000, 10000);
-    private static ArrayList<Integer> a2 = (ArrayList<Integer>) a1.clone(); // одинаковые рандомные выборки
-    private static ArrayList<Integer> b = GeneratorData.sortNumber(countB, -10000, 10000);
+    @State(Scope.Benchmark)
+    public static class ExecutionPlan {
 
-    @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @Fork(value = 2)
-    @Warmup(iterations = 0)
-    @Measurement(iterations = 1)
-    public void merge() {
-        Simple.merge(a1, b);
+        @Param({"1000", "100000", "1000000"})
+        public int countA;
+
+        @Param({"1000", "100000", "1000000"})
+        public int countB;
+
+        public static ArrayList<Integer> aOld;
+        public static ArrayList<Integer> aNew;
+        public static ArrayList<Integer> b;
+
+        @Setup(Level.Invocation)
+        public void setUp() {
+            aOld = GeneratorData.sortNumber(countA, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            aNew = (ArrayList<Integer>) aOld.clone();
+            b = GeneratorData.sortNumber(countB, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        }
     }
 
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
-    @Fork(value = 2)
+    @Fork(value = 1)
     @Warmup(iterations = 0)
     @Measurement(iterations = 1)
-    public void merge2() {
-        Simple.merge2(a2, b);
+    public void merge(ExecutionPlan plan) {
+        Simple.merge(plan.aNew, plan.b);
     }
 
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @Fork(value = 1)
+    @Warmup(iterations = 0)
+    @Measurement(iterations = 1)
+    public void merge2(ExecutionPlan plan) {
+        Simple.merge2(plan.aOld, plan.b);
+    }
 }
