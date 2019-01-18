@@ -1,12 +1,16 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Simple {
     public static void merge(ArrayList<Integer> a, ArrayList<Integer> b) {
         final int lenB = b.size();
         final int lenA = a.size();
-        int iB = 0;  //index for ArrayList<Integer> b
+        int iB = 0;  //index for ArrayList<Integer> d_b
         int iTempA = 0;  //index for temporary tempA
         ArrayList<Integer> tempA = (ArrayList<Integer>) a.clone();
 
@@ -52,5 +56,18 @@ public class Simple {
                 a.add(b.get(indexB++));
             }
         }
+    }
+
+    public static void merge3(ArrayList<Integer> listA, ArrayList<Integer> listB) {
+        listA.addAll(listB);
+        Collections.sort(listA);
+    }
+
+    public static void merge4(ArrayList<Integer> listA, ArrayList<Integer> listB) {
+        List<Integer> temp = Stream.concat(listA.stream(), listB.stream())
+                .sorted()
+                .collect(Collectors.toList());
+        listA.clear();
+        listA.addAll(temp);
     }
 }
