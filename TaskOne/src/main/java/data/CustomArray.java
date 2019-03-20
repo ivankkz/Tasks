@@ -1,8 +1,8 @@
-package main.java.data;
+package data;
 
-import java.util.ArrayList;
-import java.util.Stack;
 import java.util.TreeSet;
+
+import static java.lang.Thread.sleep;
 
 // E implements Comparable
 public class CustomArray<E> {
@@ -12,16 +12,15 @@ public class CustomArray<E> {
         this.data = new TreeSet<>();
     }
 
-    public void add(E item){
-        synchronized (data){
+    public void add(E item) {
+        synchronized (data) {
             data.add(item);
         }
     }
 
-    public void deleteMin(){
+    public E getAndDeleteMin() {
         synchronized (data) {
-            data.pollFirst();
+            return data.pollFirst();
         }
     }
-
 }

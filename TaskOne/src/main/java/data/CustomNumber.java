@@ -1,12 +1,8 @@
-package main.java.data;
+package data;
 
 public class CustomNumber implements Comparable<CustomNumber> {
     private int num;
     private String numStr;
-
-    public CustomNumber(String numStr) {
-        this(18, numStr);
-    }
 
     public CustomNumber(int num, String numStr) {
         this.num = num;
@@ -20,5 +16,10 @@ public class CustomNumber implements Comparable<CustomNumber> {
 
     public int getNum() {
         return num;
+    }
+
+    @Override
+    public String toString() {
+        return num + " | " + numStr;
     }
 }
