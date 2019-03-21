@@ -1,6 +1,6 @@
-package service;
+package by.justi1.service;
 
-import model.User;
+import by.justi1.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

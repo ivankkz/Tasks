@@ -1,4 +1,4 @@
-package model;
+package by.justi1.model;
 
 public class User {
     private long id;

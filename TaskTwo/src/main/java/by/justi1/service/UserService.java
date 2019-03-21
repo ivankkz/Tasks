@@ -1,8 +1,8 @@
-package service;
+package by.justi1.service;
 
 import java.util.List;
 
-import model.User;
+import by.justi1.model.User;
 
 public interface UserService {
 

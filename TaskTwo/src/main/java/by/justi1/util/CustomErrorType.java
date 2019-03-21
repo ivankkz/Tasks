@@ -1,7 +1,6 @@
-package util;
+package by.justi1.util;
 
 public class CustomErrorType {
-
     private String errorMessage;
 
     public CustomErrorType(String errorMessage){
@@ -11,5 +10,4 @@ public class CustomErrorType {
     public String getErrorMessage() {
         return errorMessage;
     }
-
 }
