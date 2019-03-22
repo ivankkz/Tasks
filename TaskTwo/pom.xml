@@ -38,11 +38,12 @@
             <version>1.4.194</version>
             <!--<version>runtime</version>-->
         </dependency>
-        <!-- <dependency>
+
+         <dependency>
              <groupId>org.springframework.boot</groupId>
              <artifactId>spring-boot-devtools</artifactId>
              <optional>true</optional>
-         </dependency>-->
+         </dependency>
     </dependencies>
 
 

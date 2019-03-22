@@ -5,7 +5,6 @@ import java.util.List;
 import by.justi1.model.User;
 
 public interface UserService {
-
     User findById(long id);
 
     User findByName(String name);
