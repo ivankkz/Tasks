@@ -1,16 +1,16 @@
 package data;
 
-public class CustomNumber implements Comparable<CustomNumber> {
+public class NumberUsingWords implements Comparable<NumberUsingWords> {
     private int num;
     private String numStr;
 
-    public CustomNumber(int num, String numStr) {
+    public NumberUsingWords(int num, String numStr) {
         this.num = num;
         this.numStr = numStr;
     }
 
     @Override
-    public int compareTo(CustomNumber o) {
+    public int compareTo(NumberUsingWords o) {
         return num - o.getNum();
     }
 
