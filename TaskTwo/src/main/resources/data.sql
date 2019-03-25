@@ -1,5 +1,6 @@
-insert into student
-values(10001,'Ranga', 'E1234567');
-
-insert into student
-values(10002,'Ravi', 'A1234568');
+--insert into users
+--(id,firstname, lastname, email)
+--values
+--(100,'Ivan','Barikov', 'jdkfkdf@gmail.com'),
+--(101,'Boris','Musffh', 'rokooo@gmail.com');
+;

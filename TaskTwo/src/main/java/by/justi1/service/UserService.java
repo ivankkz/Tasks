@@ -1,23 +1,12 @@
 package by.justi1.service;
 
-import java.util.List;
+import by.justi1.repository.UserRepository;
 
-import by.justi1.model.User;
+public class UserService {
+    private final UserRepository userRepository;
 
-public interface UserService {
-    User findById(long id);
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-    User findByName(String name);
-
-    void saveUser(User user);
-
-    void updateUser(User user);
-
-    void deleteUserById(long id);
-
-    List<User> findAllUsers();
-
-    void deleteAllUsers();
-
-    boolean isUserExist(User user);
 }
