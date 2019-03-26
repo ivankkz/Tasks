@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -15,6 +16,8 @@ public class User {
     private String firstname;
     private String lastname;
     private String email;
+    private LocalDate date;
+    private String password;
 
     public User() {
     }
@@ -49,6 +52,22 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDate getDateOfBirthday() {
+        return date;
+    }
+
+    public void setDateOfBirthday(LocalDate date) {
+        this.date = date;
     }
 
     @Override
