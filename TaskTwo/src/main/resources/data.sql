@@ -1,4 +1,5 @@
 insert into users
-(id, firstname, lastname, email,password)
+(id, firstname, lastname, date, email,password)
 values
-(100,'Ivan','Yakimovich', '12@gmail.com', '123');
+(100,'Ivan','Baffgt', '1999-10-28','1@gmail.com', '123');
+;

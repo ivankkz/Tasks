@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -24,49 +23,37 @@ public class RestApiController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> listAllUsers() {
-        List<User> users = userService.getAll();
-        if (users.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(users, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ResponseEntity<String> addNewUsers(
-            @RequestParam String fname,
-            @RequestParam String lname,
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity<User> add(
+            @RequestParam(required = false) String fname,
+            @RequestParam(required = false) String lname,
             @RequestParam String email,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
             @RequestParam String pass
     ) {
         User user;
         try {
             user = userService.registerNewUserAccount(new UserDto(fname, lname, email, date, pass));
         } catch (EmailExistsException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<>("We added this user\n" + user.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public ResponseEntity<String> find(
+    @RequestMapping(value = "/find", method = RequestMethod.POST)
+    public ResponseEntity<User> find(
             @RequestParam String email
     ) {
         User user = userService.findByEmail(email);
-
-        if (user == null)
-            return new ResponseEntity<>("The database hasn't a user with this email\n" + "email=" + email, HttpStatus.OK);
-        return new ResponseEntity<>("The database has this user\n" + user.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public ResponseEntity<String> delete(
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public ResponseEntity delete(
             @RequestParam Long id
     ) {
         userService.deleteById(id);
-        return new ResponseEntity<>("We try to delete user with this id\n" + "id =" + id, HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

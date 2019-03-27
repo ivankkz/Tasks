@@ -1,9 +1,6 @@
 package by.justi1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -16,7 +13,9 @@ public class User {
     private String firstname;
     private String lastname;
     private String email;
-    private LocalDate date;
+
+    @Column(name = "date")
+    private LocalDate dateOfBirthday;
     private String password;
 
     public User() {
@@ -63,11 +62,11 @@ public class User {
     }
 
     public LocalDate getDateOfBirthday() {
-        return date;
+        return dateOfBirthday;
     }
 
     public void setDateOfBirthday(LocalDate date) {
-        this.date = date;
+        this.dateOfBirthday = date;
     }
 
     @Override
@@ -94,7 +93,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "[id = " + id + ", firstname = " + firstname + ", lastname = " + lastname
-                + ", email = " + email + "]";
+        return "[id = " + id + "; email = " + email + "]";
     }
 }
