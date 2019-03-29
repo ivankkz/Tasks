@@ -4,10 +4,14 @@ import by.justi1.model.User;
 import by.justi1.model.UserDto;
 import by.justi1.repository.UserRepository;
 import by.justi1.util.EmailExistsException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -23,8 +27,8 @@ public class UserService {
         user.setLastname(accDto.getLastname());
         user.setEmail(accDto.getEmail());
         user.setDateOfBirthday(accDto.getDateOfBirthday());
-        user.setPassword(accDto.getPassword());
-//        user.setPassword(passwordEncoder.encode(accDto.getPassword()));
+//        user.setPassword(accDto.getPassword());
+        user.setPassword(passwordEncoder.encode(accDto.getPassword()));
 
         return userRepository.save(user);
     }

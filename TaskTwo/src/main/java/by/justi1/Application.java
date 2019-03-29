@@ -18,6 +18,8 @@ curl guide:
 https://gist.github.com/subfuzion/08c5d85437d5d4f00e58
 LocalDate using @RequestParam and @DateTimeFormat:
 https://www.petrikainulainen.net/programming/spring-framework/spring-from-the-trenches-parsing-date-and-time-information-from-a-request-parameter/
+Rest Security Spring:
+https://www.baeldung.com/securing-a-restful-web-service-with-spring-security
 */
 
 @SpringBootApplication

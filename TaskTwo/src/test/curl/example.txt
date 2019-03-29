@@ -8,3 +8,5 @@ curl -i -b @cookies.txt -d "email=16@gmail.com" -X POST http://localhost:8080/us
 curl -i -b @cookies.txt -d "id=2" -X POST http://localhost:8080/user/find
 
 curl -i -X POST -d "username=u" -d "password=u" -c cookies.txt  http://localhost:8080/login
+
+curl -i -X POST -d username=admin -d password=admin -c coolies.txt  http://localhost:8080/login
