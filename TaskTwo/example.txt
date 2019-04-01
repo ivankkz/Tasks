@@ -1,0 +1,19 @@
+authorization:
+curl -i -X POST -d username=admin -d password=admin -c cookies.txt  http://localhost:8080/login
+curl -i -X POST -d username=user -d password=user -c cookies.txt  http://localhost:8080/login
+
+delete: admin
+curl -i -b cookies.txt -c cookies.txt -X DELETE "http://localhost:8080/user/delete?id=2"
+
+find: user, admin
+curl -i -b cookies.txt -c cookies.txt -X GET "http://localhost:8080/user/find?email=14"
+curl -i -b cookies.txt -c cookies.txt -X GET "http://localhost:8080/user/find?email="
+
+add: everyone
+curl ^
+    -i ^
+    -b cookies.txt ^
+    -c cookies.txt ^
+    -d "fname=Grisha&email=134&date=1997-09-24&pass=tron2" ^
+    -H "Content-Type: application/x-www-form-urlencoded" ^
+    -X POST http://localhost:8080/user/add

@@ -21,7 +21,6 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan("by.justi1.security")
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
     private CustomAccessDeniedHandler accessDeniedHandler;
 
@@ -57,6 +56,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/user/add").permitAll()
+                .antMatchers("/h2-console/").permitAll()
                 .antMatchers("/user/list").hasRole("USER")
                 .antMatchers("/user/list").hasRole("ADMIN")
                 .antMatchers("/user/delete").hasRole("ADMIN")
@@ -74,5 +74,4 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
-
 }

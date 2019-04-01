@@ -23,7 +23,7 @@ public class RestApiController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<User> add(
             @RequestParam(required = false) String fname,
             @RequestParam(required = false) String lname,
@@ -49,7 +49,7 @@ public class RestApiController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity delete(
             @RequestParam Long id
     ) {
