@@ -1,6 +1,5 @@
 --insert into users
---(id,firstname, lastname, email)
---values
---(100,'Ivan','Barikov', 'jdkfkdf@gmail.com'),
---(101,'Boris','Musffh', 'rokooo@gmail.com');
-;
+-- (id, firstname, lastname, date, email,password)
+-- values
+-- (100,'Ivan','Baffgt', '1999-10-28','1@gmail.com', '123');
+ ;

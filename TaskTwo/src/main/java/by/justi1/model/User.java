@@ -1,9 +1,7 @@
 package by.justi1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -15,6 +13,10 @@ public class User {
     private String firstname;
     private String lastname;
     private String email;
+
+    @Column(name = "date")
+    private LocalDate dateOfBirthday;
+    private String password;
 
     public User() {
     }
@@ -51,6 +53,22 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDate getDateOfBirthday() {
+        return dateOfBirthday;
+    }
+
+    public void setDateOfBirthday(LocalDate date) {
+        this.dateOfBirthday = date;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -75,7 +93,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "[id = " + id + ", firstname = " + firstname + ", lastname = " + lastname
-                + ", email = " + email + "]";
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
