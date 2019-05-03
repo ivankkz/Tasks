@@ -1,4 +1,5 @@
-import main.Simple;
+package tasks.merging;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -10,14 +11,13 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(value = Parameterized.class)
-public class SimpleTest {
+public class SortListsMergerTest {
     private ArrayList<Integer> a;
     private ArrayList<Integer> b;
     private String expectedA;
     private String expectedB;
 
-
-    public SimpleTest(List<Integer> a, List<Integer> b, String s) {
+    public SortListsMergerTest(List<Integer> a, List<Integer> b, String s) {
         this.expectedA = s;
         this.a = new ArrayList<>(a);
         this.b = new ArrayList<>(b);
@@ -42,15 +42,8 @@ public class SimpleTest {
 
     @Test
     public void merge() {
-        long startTime1 = System.nanoTime();
-        Simple.merge(a, b);
-        long finishTime1 = System.nanoTime();
-
+        SortListsMerger.merge(a, b);
         assertEquals(a.toString(), expectedA);
         assertEquals(b.toString(), expectedB);
-
-        System.out.println("Затраченное время = " + Long.toString(finishTime1 - startTime1) + " наносек");
     }
-
-
 }

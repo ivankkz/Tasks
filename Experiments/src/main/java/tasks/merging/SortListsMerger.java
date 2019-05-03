@@ -1,4 +1,4 @@
-package main;
+package tasks.merging;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Simple {
+public class SortListsMerger {
     public static void merge(ArrayList<Integer> a, ArrayList<Integer> b) {
         final int lenB = b.size();
         final int lenA = a.size();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class GeneratorData {
+public class DataGenerator {
     public static ArrayList<Integer> sortNumber(int count, int min, int max) {
         ArrayList<Integer> res = new ArrayList<>(count);
 
